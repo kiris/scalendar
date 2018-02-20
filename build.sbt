@@ -31,3 +31,33 @@ libraryDependencies <++= scalaVersion {
 }
 
 publishTo := Some(Resolver.file("file", file("repo")))
+
+publishMavenStyle := true
+
+publishArtifact in Test := false
+
+unmanagedClasspath in Compile += Attributed.blank(new java.io.File("doesnotexist"))
+
+pomIncludeRepository := { x => false }
+
+pomExtra := (
+  <url>https://github.com/philcali/scalendar</url>
+  <licenses>
+    <license>
+      <name>The MIT License</name>
+      <url>http://www.opensource.org/licenses/mit-license.php</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>git@github.com:philcali/scalendar.git</url>
+    <connection>scm:git:git@github.com:philcali/scalendar.git</connection>
+  </scm>
+  <developers>
+    <developer>
+      <id>philcali</id>
+      <name>Philip Cali</name>
+      <url>http://philcalicode.blogspot.com/</url>
+    </developer>
+  </developers>
+)
